@@ -1,6 +1,6 @@
-# epi-trader
+# Epi-Trader
 
-> A Vue.js project
+> Learn Vue.js by buying and selling fake things
 
 ## Build Setup
 
