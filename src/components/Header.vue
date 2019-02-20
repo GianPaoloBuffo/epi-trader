@@ -73,13 +73,7 @@ export default {
             this.randomiseStocks();
         },
         saveData() {
-            const data = {
-                funds: this.$store.getters.funds,
-                stockPortfolio: this.$store.getters.stockPortfolio,
-                stocks: this.$store.getters.stocks,
-            };
-
-            this.$http.put('data.json', data);
+            // TODO: 2 - Save data using vue-resource
         },
         loadData() {
             this.fetchData();
