@@ -1,3 +1,5 @@
+// TODO: 4 - Add new actions to the store
+
 import Vue from 'vue';
 import Vuex from 'vuex';
 

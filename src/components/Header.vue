@@ -13,13 +13,16 @@
             <a>Stocks</a>
           </router-link>
         </ul>
-        <!-- TODO: 1 - Display portfolio funds -->
-        <strong class="navbar-text navbar-right">Funds: FUNDS</strong>
+        <strong class="navbar-text navbar-right">Funds: {{ funds | currency }}</strong>
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="#">End Day</a>
+          <li> 
+            <a href="#" @click="randomiseStocks">End Day</a>
           </li>
-          <li class="dropdown">
+          <li
+            class="dropdown"     
+            :class="{open: isDropdownOpen}"
+            @click="isDropdownOpen = !isDropdownOpen"
+          >
             <a
               href="#"
               class="dropdown-toggle"
@@ -33,10 +36,10 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="#">Save Data</a>
+                <a href="#" @click="saveData">Save Data</a>
               </li>
               <li>
-                <a href="#">Load Data</a>
+                <a href="#" @click="loadData">Load Data</a>
               </li>
             </ul>
           </li>
@@ -47,7 +50,32 @@
 </template>
 
 <script>
-export default {
+import { mapActions } from 'vuex';
 
+export default {
+  data() {
+      return {
+          isDropdownOpen: false,
+      };
+  },
+  computed: {
+    funds() {
+      return this.$store.getters.funds;
+    },
+  },
+  methods: {
+    ...mapActions({
+      randomiseStocks: 'randomiseStocks',
+      fetchData: 'loadData'
+    }),
+    saveData() {
+      // TODO: 2 - Get the funds, stockPortfolio and stocks from the store
+      // and save them to the Firebase DB
+      const data = {};
+    },
+    loadData() {
+      this.$store.dispatch('fetchData');
+    },
+  },
 }
 </script>

@@ -14,14 +14,15 @@
             type="number"
             class="form-control"
             placeholder="Quantity"
+            :class="{ danger : insufficientFunds }"
           >
         </div>
         <div class="pull-right">
           <button
             class="btn btn-success"
-            :disabled="quantity <= 0 || !Number.isInteger(quantity)"
+            :disabled="insufficientFunds || quantity <= 0 || !Number.isInteger(quantity)"
             @click="buyStock"
-          >Buy</button>
+          >{{ insufficientFunds ? 'Insufficient' : 'Buy' }}</button>
         </div>
       </div>
     </div>
@@ -46,10 +47,7 @@ export default {
       return this.$store.getters.funds;
     },
     insufficientFunds() {
-      // TODO: 2 - If there are insufficient funds:
-      // 1. Disable the button
-      // 2. Update the button text
-      // 3. Add a red border to the input
+      return this.quantity * this.stock.price > this.funds;
     },
   },
   methods: {
@@ -67,3 +65,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .danger {
+    border: 2px solid red;
+  }
+</style>
