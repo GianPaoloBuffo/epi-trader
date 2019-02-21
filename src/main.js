@@ -1,7 +1,6 @@
-// TODO: 1 - Add VueResource to the application, and add a Firebase realtime DB as the resource root
-
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
 
 import App from './App.vue';
 
@@ -9,6 +8,9 @@ import routes from './routes';
 import store from './store/store';
 
 Vue.use(VueRouter);
+Vue.use(VueResource);
+
+Vue.http.options.root = 'https://vuejs-stock-trader-608fd.firebaseio.com/';
 
 Vue.filter('currency', value => `EC ${value.toLocaleString()}`);
 
