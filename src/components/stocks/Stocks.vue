@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import stocks from '../../data/stocks-data.js';
+
 // TODO: 3 - Add Stock component to Stocks
 export default {
   
