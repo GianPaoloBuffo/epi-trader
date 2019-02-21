@@ -2,14 +2,18 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <!-- // TODO: 3 - Link up the router with your HTML template -->
+        <router-view />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+// TODO: 2 - Add Header component to App
+
+export default {
+
+};
 </script>
 
 <style>

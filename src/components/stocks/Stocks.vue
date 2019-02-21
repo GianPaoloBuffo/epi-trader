@@ -1,3 +1,12 @@
 <template>
-  <h1>The Stocks component</h1> 
+  <div>
+    
+  </div>
 </template>
+
+<script>
+// TODO: 3 - Add Stock component to Stocks
+export default {
+  
+};
+</script>
