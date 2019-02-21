@@ -10,8 +10,8 @@
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <!-- HERE -->
-          <a href="#" class="navbar-brand">Portfolio</a>
-          <a href="#" class="navbar-brand">Stocks</a>
+          <a href="#">Portfolio</a>
+          <a href="#">Stocks</a>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
