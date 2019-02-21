@@ -18,5 +18,6 @@ export default {
   components: {
     appStock: Stock,
   },
+  // TODO: 4 - Fetch stocks from state instead of directly from dummy data
 };
 </script>

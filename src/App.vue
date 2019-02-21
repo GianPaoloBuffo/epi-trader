@@ -16,6 +16,7 @@ export default {
   components: {
     appHeader: Header,
   },
+  // TODO: 3 - Initialise the stocks when the App is created
 };
 </script>
 
