@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <app-header></app-header>
     <div class="row">
       <div class="col-xs-12">
         <router-view />
@@ -9,10 +10,12 @@
 </template>
 
 <script>
-// TODO: 2 - Add Header component to App
+import Header from './components/Header';
 
 export default {
-
+  components: {
+    appHeader: Header,
+  },
 };
 </script>
 
