@@ -14,14 +14,15 @@
             type="number"
             class="form-control"
             placeholder="Quantity"
+            :class="{ danger: insufficientQuantity }"
           >
         </div>
         <div class="pull-right">
           <button
             class="btn btn-success"
-            :disabled="quantity <= 0 || !Number.isInteger(quantity)"
+            :disabled="insufficientQuantity || quantity <= 0 || !Number.isInteger(quantity)"
             @click="sellStock"
-          >Sell</button>
+          >{{ insufficientQuantity ? 'Not Enough' : 'Sell' }}</button>
         </div>
       </div>
     </div>
@@ -34,25 +35,36 @@ export default {
     stock: {
       type: Object,
       required: true
-    },
-    data() {
-      return {
-        quantity: 0,
+    }
+  },
+  data() {
+    return {
+      quantity: 0
+    };
+  },
+  computed: {
+    insufficientQuantity() {
+      return this.quantity > this.stock.quantity;
+    }
+  },
+  methods: {
+    sellStock() {
+      const order = {
+        stockId: this.stock.id,
+        stockPrice: this.stock.price,
+        quantity: this.quantity
       };
-    },
-    methods: {
-      sellStock() {
-        const order = {
-          stockId: this.stock.id,
-          stockPrice: this.stock.price,
-          quantity: this.quantity
-        };
 
-        this.$store.dispatch('sellStock', order);
+      this.$store.dispatch('sellStock', order);
 
-        this.quantity = 0;
-      }
+      this.quantity = 0;
     }
   }
 };
 </script>
+
+<style scoped>
+  .danger {
+    border: 2px solid red;
+  }
+</style>

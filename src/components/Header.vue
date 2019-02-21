@@ -13,6 +13,8 @@
             <a>Stocks</a>
           </router-link>
         </ul>
+        <!-- TODO: 1 - Display portfolio funds -->
+        <strong class="navbar-text navbar-right">Funds: FUNDS</strong>
         <ul class="nav navbar-nav navbar-right">
           <li>
             <a href="#">End Day</a>
@@ -43,3 +45,9 @@
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+
+}
+</script>
