@@ -16,7 +16,9 @@ export default {
   components: {
     appHeader: Header,
   },
-  // TODO: 3 - Initialise the stocks when the App is created
+  created() {
+    this.$store.dispatch('initStocks');
+  }
 };
 </script>
 

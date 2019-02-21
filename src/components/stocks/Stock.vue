@@ -49,6 +49,7 @@ export default {
         quantity: this.quantity
       };
 
+      // TODO: 5 - Let's buy the stock!
       console.log(order);
 
       this.quantity = 0;
