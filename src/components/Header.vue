@@ -74,7 +74,7 @@ export default {
       const data = {};
     },
     loadData() {
-      this.$store.dispatch('fetchData');
+      this.fetchData();
     },
   },
 }
