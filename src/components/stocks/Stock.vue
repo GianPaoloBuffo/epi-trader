@@ -31,38 +31,38 @@
 
 <script>
 export default {
-  props: {
-    stock: {
-      type: Object,
-      required: true
-    }
-  },
-  data() {
-    return {
-      quantity: 0
-    };
-  },
-  computed: {
-    funds() {
-      return this.$store.getters.funds;
+    props: {
+        stock: {
+            type: Object,
+            required: true,
+        },
     },
-    insufficientFunds() {
-      return this.quantity * this.stock.price > this.funds;
+    data() {
+        return {
+            quantity: 0,
+        };
     },
-  },
-  methods: {
-    buyStock() {
-      const order = {
-        stockId: this.stock.id,
-        stockPrice: this.stock.price,
-        quantity: this.quantity
-      };
+    computed: {
+        funds() {
+            return this.$store.getters.funds;
+        },
+        insufficientFunds() {
+            return this.quantity * this.stock.price > this.funds;
+        },
+    },
+    methods: {
+        buyStock() {
+            const order = {
+                stockId: this.stock.id,
+                stockPrice: this.stock.price,
+                quantity: this.quantity,
+            };
 
-      this.$store.dispatch('buyStock', order);
+            this.$store.dispatch('buyStock', order);
 
-      this.quantity = 0;
-    }
-  }
+            this.quantity = 0;
+        },
+    },
 };
 </script>
 

@@ -15,11 +15,11 @@
         </ul>
         <strong class="navbar-text navbar-right">Funds: {{ funds | currency }}</strong>
         <ul class="nav navbar-nav navbar-right">
-          <li> 
+          <li>
             <a href="#" @click="randomiseStocks">End Day</a>
           </li>
           <li
-            class="dropdown"     
+            class="dropdown"
             :class="{open: isDropdownOpen}"
             @click="isDropdownOpen = !isDropdownOpen"
           >
@@ -32,7 +32,7 @@
               aria-expanded="false"
             >
               Save &amp; Load
-              <span class="caret"></span>
+              <span class="caret"/>
             </a>
             <ul class="dropdown-menu">
               <li>
@@ -53,29 +53,29 @@
 import { mapActions } from 'vuex';
 
 export default {
-  data() {
-      return {
-          isDropdownOpen: false,
-      };
-  },
-  computed: {
-    funds() {
-      return this.$store.getters.funds;
+    data() {
+        return {
+            isDropdownOpen: false,
+        };
     },
-  },
-  methods: {
-    ...mapActions({
-      randomiseStocks: 'randomiseStocks',
-      fetchData: 'loadData'
-    }),
-    saveData() {
-      // TODO: 2 - Get the funds, stockPortfolio and stocks from the store
-      // and save them to the Firebase DB
-      const data = {};
+    computed: {
+        funds() {
+            return this.$store.getters.funds;
+        },
     },
-    loadData() {
-      this.fetchData();
+    methods: {
+        ...mapActions({
+            randomiseStocks: 'randomiseStocks',
+            fetchData: 'loadData',
+        }),
+        saveData() {
+            // TODO: 2 - Get the funds, stockPortfolio and stocks from the store
+            // and save them to the Firebase DB
+            const data = {};
+        },
+        loadData() {
+            this.fetchData();
+        },
     },
-  },
-}
+};
 </script>
