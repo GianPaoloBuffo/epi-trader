@@ -15,11 +15,11 @@
         </ul>
         <strong class="navbar-text navbar-right">Funds: {{ funds | currency }}</strong>
         <ul class="nav navbar-nav navbar-right">
-          <li> 
+          <li>
             <a href="#" @click="randomiseStocks">End Day</a>
           </li>
           <li
-            class="dropdown"     
+            class="dropdown"
             :class="{open: isDropdownOpen}"
             @click="isDropdownOpen = !isDropdownOpen"
           >
@@ -32,7 +32,7 @@
               aria-expanded="false"
             >
               Save &amp; Load
-              <span class="caret"></span>
+              <span class="caret"/>
             </a>
             <ul class="dropdown-menu">
               <li>
@@ -53,31 +53,31 @@
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  data() {
-      return {
-          isDropdownOpen: false,
-      };
-  },
-  computed: {
-    ...mapGetters(['funds', 'stockPortfolio', 'stocks']),
-  },
-  methods: {
-    ...mapActions({
-      randomiseStocks: 'randomiseStocks',
-      fetchData: 'loadData'
-    }),
-    saveData() {
-      const data = {
-        funds: this.funds,
-        stockPortfolio: this.stockPortfolio,
-        stocks: this.stocks,
-      };
+    data() {
+        return {
+            isDropdownOpen: false,
+        };
+    },
+    computed: {
+        ...mapGetters(['funds', 'stockPortfolio', 'stocks']),
+    },
+    methods: {
+        ...mapActions({
+            randomiseStocks: 'randomiseStocks',
+            fetchData: 'loadData',
+        }),
+        saveData() {
+            const data = {
+                funds: this.funds,
+                stockPortfolio: this.stockPortfolio,
+                stocks: this.stocks,
+            };
 
-      this.$http.put('data.json', data);
+            this.$http.put('data.json', data);
+        },
+        loadData() {
+            this.fetchData();
+        },
     },
-    loadData() {
-      this.fetchData();
-    },
-  },
-}
+};
 </script>
