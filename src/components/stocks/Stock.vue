@@ -24,24 +24,24 @@
 
 <script>
 export default {
-  data() {
-    return {
-      quantity: 0,
-    };
-  },
-  methods: {
-    buyStock() {
-      // TODO: 6 - Complete the 'order' object and bind this method to the button's click event
-      const order = {
-        stockId: null,
-        stockPrice: null,
-        quantity: this.quantity,
-      }
-
-      console.log(order);
-
-      this.quantity = 0;
+    data() {
+        return {
+            quantity: 0,
+        };
     },
-  },
+    methods: {
+        buyStock() {
+            // TODO: 6 - Complete the 'order' object and bind this method to the button's click event
+            const order = {
+                stockId: null,
+                stockPrice: null,
+                quantity: this.quantity,
+            };
+
+            console.log(order);
+
+            this.quantity = 0;
+        },
+    },
 };
 </script>
