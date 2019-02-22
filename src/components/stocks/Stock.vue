@@ -1,12 +1,7 @@
 <template>
   <div class="col-sm-6 col-md-4">
     <div class="panel panel-success">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          {{ stock.name }}
-          <small>(Price: {{ stock.price }})</small>
-        </h3>
-      </div>
+      <slot name="heading"/>
       <div class="panel-body">
         <div class="pull-left">
           <input
@@ -17,52 +12,38 @@
             :class="{ danger : insufficientFunds }"
           >
         </div>
-        <div class="pull-right">
-          <button
-            class="btn btn-success"
-            :disabled="insufficientFunds || quantity <= 0 || !Number.isInteger(quantity)"
-            @click="buyStock"
-          >{{ insufficientFunds ? 'Insufficient' : 'Buy' }}</button>
-        </div>
+        <slot :quantity="quantity" :insufficient="insufficientFunds" :click-handler="buyStock" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import stockMixin from '../mixins/stock-mixin';
+
 export default {
-  props: {
-    stock: {
-      type: Object,
-      required: true
-    }
-  },
-  data() {
-    return {
-      quantity: 0
-    };
-  },
-  computed: {
-    funds() {
-      return this.$store.getters.funds;
+    mixins: [stockMixin],
+    computed: {
+        funds() {
+            return this.$store.getters.funds;
+        },
+        insufficientFunds() {
+            return this.quantity * this.stock.price > this.funds;
+        },
     },
-    insufficientFunds() {
-      return this.quantity * this.stock.price > this.funds;
+    methods: {
+        buyStock() {
+            const order = {
+                stockId: this.stock.id,
+                stockPrice: this.stock.price,
+                quantity: this.quantity,
+            };
+
+            this.$store.dispatch('buyStock', order);
+
+            this.quantity = 0;
+        },
     },
-  },
-  methods: {
-    buyStock() {
-      const order = {
-        stockId: this.stock.id,
-        stockPrice: this.stock.price,
-        quantity: this.quantity
-      };
-
-      this.$store.dispatch('buyStock', order);
-
-      this.quantity = 0;
-    }
-  }
 };
 </script>
 
