@@ -29,7 +29,7 @@
               aria-expanded="false"
             >
               Save &amp; Load
-              <span class="caret"></span>
+              <span class="caret"/>
             </a>
             <ul class="dropdown-menu">
               <li>
@@ -49,5 +49,5 @@
 <script>
 export default {
 
-}
+};
 </script>

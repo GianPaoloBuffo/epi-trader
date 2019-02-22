@@ -31,35 +31,35 @@
 
 <script>
 export default {
-  props: {
-    stock: {
-      type: Object,
-      required: true
-    }
-  },
-  data() {
-    return {
-      quantity: 0
-    };
-  },
-  computed: {
-    insufficientQuantity() {
-      return this.quantity > this.stock.quantity;
-    }
-  },
-  methods: {
-    sellStock() {
-      const order = {
-        stockId: this.stock.id,
-        stockPrice: this.stock.price,
-        quantity: this.quantity
-      };
+    props: {
+        stock: {
+            type: Object,
+            required: true,
+        },
+    },
+    data() {
+        return {
+            quantity: 0,
+        };
+    },
+    computed: {
+        insufficientQuantity() {
+            return this.quantity > this.stock.quantity;
+        },
+    },
+    methods: {
+        sellStock() {
+            const order = {
+                stockId: this.stock.id,
+                stockPrice: this.stock.price,
+                quantity: this.quantity,
+            };
 
-      this.$store.dispatch('sellStock', order);
+            this.$store.dispatch('sellStock', order);
 
-      this.quantity = 0;
-    }
-  }
+            this.quantity = 0;
+        },
+    },
 };
 </script>
 

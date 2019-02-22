@@ -30,40 +30,41 @@
 
 <script>
 export default {
-  props: {
-    stock: {
-      type: Object,
-      required: true
-    }
-  },
-  data() {
-    return {
-      quantity: 0
-    };
-  },
-  computed: {
-    funds() {
-      return this.$store.getters.funds;
+    props: {
+        stock: {
+            type: Object,
+            required: true,
+        },
     },
-    insufficientFunds() {
-      // TODO: 2 - If there are insufficient funds:
-      // 1. Disable the button
-      // 2. Update the button text
-      // 3. Add a red border to the input
+    data() {
+        return {
+            quantity: 0,
+        };
     },
-  },
-  methods: {
-    buyStock() {
-      const order = {
-        stockId: this.stock.id,
-        stockPrice: this.stock.price,
-        quantity: this.quantity
-      };
+    computed: {
+        funds() {
+            return this.$store.getters.funds;
+        },
+        insufficientFunds() {
+            // TODO: 2 - If there are insufficient funds:
+            // 1. Disable the button
+            // 2. Update the button text
+            // 3. Add a red border to the input
+            return false;
+        },
+    },
+    methods: {
+        buyStock() {
+            const order = {
+                stockId: this.stock.id,
+                stockPrice: this.stock.price,
+                quantity: this.quantity,
+            };
 
-      this.$store.dispatch('buyStock', order);
+            this.$store.dispatch('buyStock', order);
 
-      this.quantity = 0;
-    }
-  }
+            this.quantity = 0;
+        },
+    },
 };
 </script>
