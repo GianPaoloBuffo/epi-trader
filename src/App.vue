@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <app-header></app-header>
+    <app-header/>
     <div class="row">
       <div class="col-xs-12">
         <router-view />
@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import Header from './components/Header';
+import Header from './components/Header.vue';
 
 export default {
-  components: {
-    appHeader: Header,
-  },
-  // TODO: 3 - Initialise the stocks when the App is created
+    components: {
+        appHeader: Header,
+    },
+    // TODO: 3 - Initialise the stocks when the App is created
 };
 </script>
 
