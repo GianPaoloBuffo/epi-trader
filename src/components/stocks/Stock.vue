@@ -31,6 +31,7 @@
 
 <script>
 export default {
+    // TODO: 1 - Move the duplicated code from Stock and Portfolio to a mixin
     props: {
         stock: {
             type: Object,
